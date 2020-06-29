@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# number of threads is t and number of nodes is s
+for t in 1 4 8
+do 
+    echo NUMT = $t
+    for s in 1024 4*1024 8*1024 4*1024*1024 8*1024*1024 
+    do
+        #echo NUMNODES = $s
+        g++ -DNUMT=$t -DNUMNODES=$s project4extra.cpp -o project4extra -lm -fopenmp
+        ./project4extra
+    done    
+done    

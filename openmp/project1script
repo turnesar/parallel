@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# number of threads is t and number of nodes is s
+for f in 0 1
+do 
+    echo SIMDFLAG = $f
+    for s in 1024 4*1024 8*1024 4*1024*1024 8*1024*1024 
+    do
+        echo NUMNODES = $s
+        g++ -DSIMDFLAG=$f -DNUMNODES=$s project4.cpp -o prog -lm -fopenmp
+        ./prog
+    done    
+done    
